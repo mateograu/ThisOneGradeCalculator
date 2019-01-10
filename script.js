@@ -1,39 +1,62 @@
-var count = 1;
+var count = 0;
+//calculates current grade//
+function calcCurrentGrade(){
+    var gradeCat = 0;
 
-function calculateCurrentGrade(){
-    var categoryGrades = 0;
-    var categoryWeight = 0;
-    var gradesArray = 0;
-    var gradesInt = 0;
-    var average = 0;
-    var weightPercent = 0;
-    var categoryGrade = 0;
+    var catWeight = 0;
 
-    var totalGrade = 0;
+    var percent = 0;
+
+    var gradeArray = 0;
+
+    var gradeInt = 0;
+
+    var catOfGrade = 0;
+
+    var avg = 0;
+
+
+
+    var grade = 0;
     for(var i = 0; i < count; i++){
-        categoryGrades = document.getElementById("grades" + i).value;
-        categoryWeight = document.getElementById("weight" + i).value;
+        gradeCat = document.getElementById("grades" + [i]).value;
+        catWeight = document.getElementById("weights" + [i]).value;
+        gradeArray = gradeCat.split(",");
+        gradeInt = convertArrayToNumber(gradeArray);
+        avg = averageArray(gradeInt);
 
-        gradesArray = categoryGrades.split(",");
-        gradesInt = convertArrayStringToNumber(gradesArray);
-        average = averageArray(gradesInt);
+        percent= catWeight/ 100;
+        catOfGrade= percent* avg;
 
-        weightPercent = categoryWeight / 100;
-        categoryGrade = weightPercent * average;
-
-        totalGrade += categoryGrade;
+        grade += catOfGrade;
     }
-    document.getElementById("currentGrade").innerHTML = "You currently have a " + totalGrade + "%.";
-    return totalGrade;
+    //returns the grade you currently have//
+    document.getElementById("currentGrade").innerHTML = "You currently have a " + grade + "%.";
+    return grade;
 }
+function calcGradeNeeded(){
+    var desiredGrade = parseInt(document.getElementById("desiredGrade").value);
+    var finalWeight = parseInt(document.getElementById("finalWeight").value);
 
-function convertArrayStringToNumber(grades){
+    var curGrade = calcCurrentGrade();
+
+    var curWeight = 1 - (finalWeight/100);
+
+    var gradeWeight = curGrade * curWeight
+
+    var finalGrade = (desiredGrade - gradeWeight) / (finalWeight/100);
+
+    document.getElementById("gradeWanted").innerHTML = "You need a " + finalGrade + "% on the final to get a " + desiredGrade + "% in this class.";
+
+}
+//Converts an array to a number?//
+function convertArrayToNumber(grades){
     for(var i = 0; i < grades.length; i++){
         grades[i] = parseInt(grades[i]);
     }
     return grades;
 }
-
+//returns average//
 function averageArray(grades){
     var sum = 0;
 
@@ -42,40 +65,26 @@ function averageArray(grades){
     }
     return sum/grades.length;
 }
+//gets your current grade//
 
-function calculateGradeNeeded(){
-    var desiredGrade = parseInt(document.getElementById("desiredGrade").value);
-    var finalWeight = parseInt(document.getElementById("finalWeight").value);
-
-    var currentGrade = calculateCurrentGrade();
-
-    var currentWeight = 1 - (finalWeight/100);
-
-    var gradeWeight = currentGrade * currentWeight
-
-    var finalGradeRequired = (desiredGrade - gradeWeight) / (finalWeight/100);
-
-    document.getElementById("gradeNeeded").innerHTML = "You need a " + finalGradeRequired + "% on the final to get a " + desiredGrade + "% in this class.";
-
-}
-
-function addRow(){
+//This function adds rows//
+function addRows(){
     if(count <= 5){
-        var titleInput = document.getElementById("categoryTitle").value;
-        var gradesTitle = document.createElement("th");
-        var weightTitle = document.createElement("th");
+        var titleInput = document.getElementById("categoryName").value;
+        var gradeName = document.createElement("th");
+        var weightName = document.createElement("th");
 
-        var labelRow = document.createElement("tr");
+        var nameRow = document.createElement("tr");
 
-        gradesTitle.innerHTML = titleInput + " Grades";
-        weightTitle.innerHTML = titleInput + " Weight";
+        gradeName.innerHTML = titleInput + " Grades";
+        weightName .innerHTML = titleInput + " Weights";
 
-        labelRow.appendChild(gradesTitle);
-        labelRow.appendChild(weightTitle);
+        nameRow.appendChild(gradeName);
+        nameRow.appendChild(weightName );
 
-        document.getElementById("table1").appendChild(labelRow);
+        document.getElementById("table1").appendChild(nameRow);
 
-        var category = document.createElement("tr");
+        var cat = document.createElement("tr");
         var grades = document.createElement("td");
         var weight = document.createElement("td");
 
@@ -85,15 +94,15 @@ function addRow(){
         grades.appendChild(input1);
         weight.appendChild(input2);
 
-        category.appendChild(grades);
-        category.appendChild(weight);
-        document.getElementById("table1").appendChild(category);
+        cat.appendChild(grades);
+        cat.appendChild(weight);
+        document.getElementById("table1").appendChild(cat);
 
         input1.id = "grades" + count;
-        input2.id = "weight" + count;
+        input2.id = "weights" + count;
 
-        gradesTitle.setAttribute("class", "titleColor");
-        weightTitle.setAttribute("class", "titleColor");
+        gradeName.setAttribute("class", "colorOfTitle");
+        weightName .setAttribute("class", "colorOfTitle");
 
         input1.setAttribute("class", "inputColor");
         input2.setAttribute("class", "inputColor");
@@ -101,6 +110,7 @@ function addRow(){
 
         count++;
     }else{
-        alert("Exceeded max amount of categories. Please refresh and try again.");
+        alert("You have registered too many categories. Refresh the page to start again.");
     }
 }
+

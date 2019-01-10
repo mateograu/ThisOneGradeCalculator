@@ -1,5 +1,6 @@
-body{
-    font-family: 'Cabin';
+#grades, #weights, #desiredGrade, #WeightOfFinal{
+    font-weight: bold;
+    color: indigo;
 }
 
 #table1, #table2{
@@ -10,43 +11,43 @@ body{
     border: 1px;
 }
 
-#grades, #weight, #desired-grade, #final-weight{
-    font-weight: bold;
-    color: indigo;
-}
 
-#title, #finalTitle{
+#title, #titleOfFinal{
     text-align:center;
     text-shadow: 2px 2px black;
     color: cyan;
 }
 
-#button1, #button2, #button3, #currentGrade{
+#but1, #but2, #but3, #currentGrade{
     display: block;
     margin: 20px auto 20px auto;
     text-align: center;
     color: #006600;
 }
 
+#firstGrades, #firstWeight, #desiredPercent, #finalWeight{
+    display: block;
+    margin: 10px auto 5px auto;
+    color:indigo;
+}
+
+
 body{
     background-color: darkcyan;
     text-align-all: center;
+    font-family: 'AbrilFatface';
 }
 
-#gradeNeeded, #categoryTitle{
+#gradeWanted, #categoryName{
     display: block;
     margin: 10px auto 5px auto;
     text-align: center;
     color: indigo;
 }
 
-.titleColor, .inputColor{
+.colorOfTitle, .inputColor{
     color: indigo;
 }
 
-#grades0, #weight0, #desiredGrade, #finalWeight{
-    display: block;
-    margin: 10px auto 5px auto;
-    color:indigo;
-}
+
 

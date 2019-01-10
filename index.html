@@ -6,43 +6,43 @@
     <script src="script.js"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link href='https://fonts.googleapis.com/css?family=Cabin' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=AbrilFatface' rel='stylesheet'>
 </head>
+
 <h1 id="title">Welcome to Grade Calculator</h1>
 <body>
-
 <table id="table1" align="center">
     <tr>
         <td>
             <div id="grades">Homework Grades</div>
-            <input type="text" id="grades0" placeholder="60,85,92">
+            <input type="text" id="firstGrades" placeholder="60,85,92">
         </td>
         <td>
-            <div id="weight">Homework Weight</div>
-            <input type="text" id="weight0" placeholder="15">
+            <div id="weights">Homework Weight</div>
+            <input type="text" id="firstWeight" placeholder="15">
         </td>
     </tr>
 </table>
-<input type="text" id="categoryTitle" placeholder="Category... ">
-<button onclick="addRow()" id="button1" class="w3-button w3-indigo">Add category</button>
-<button onclick="calculateCurrentGrade()" id="button2" class="w3-button w3-indigo">Calculate current grade</button>
+<input type="text" id="categoryName" placeholder="Category... ">
+<button onclick="addRows()" id="but1" class="w3-button w3-indigo">Add category(s)</button>
+<button onclick="calcCurrentGrade()" id="but2" class="w3-button w3-indigo">Get current grade</button>
 
 <div id="currentGrade"></div>
-<h1 id="finalTitle">Final Grade Calculator</h1>
+<h1 id="titleOfFinal">Final Grade Calculator</h1>
 <table id="table2" align="center">
     <tr>
         <td>
-            <div id="desired-grade">Desired Grade</div>
-            <input type="text" id="desiredGrade" placeholder="90">
+            <div id="desiredGrade">Desired Grade</div>
+            <input type="text" id="desiredPercent" placeholder="90">
         </td>
         <td>
-            <div id="final-weight">Final Weight</div>
-            <input type="text" id="finalWeight" placeholder="20">
+            <div id="finalWeight">Final Weight</div>
+            <input type="text" id="weightOfFinal" placeholder="20">
         </td>
     </tr>
 </table>
-<button onclick="calculateGradeNeeded()" id="button3" class="w3-button w3-indigo">Calculate grade needed</button>
-<div id="gradeNeeded"></div>
-
+<button onclick="calcGradeNeeded()" id="but3" class="w3-button w3-indigo">Calculate grade desired</button>
+<div id="gradeWanted"></div>
 </body>
 </html>
+
